@@ -10,7 +10,7 @@ from flask import abort
 from models import storage
 
 
-@app_views.route('/states<state_id/cities', methods=['GET', 'POST'],
+@app_views.route('/states<state_id>/cities', methods=['GET', 'POST'],
                  strict_slashes=False)
 def get_cities(state_id):
     '''retrieves the list of all city objects'''
