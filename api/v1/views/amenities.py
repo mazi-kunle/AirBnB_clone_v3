@@ -61,7 +61,7 @@ def get_an_amenity(amenity_id):
             if key in ['id', 'created_at', 'updated_at']:
                 pass
             else:
-                setattr(city, key, value)
+                setattr(amenity, key, value)
 
         amenity.save()
         return (jsonify(amenity.to_dict()))
