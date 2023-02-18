@@ -36,7 +36,7 @@ def get_amenities():
 @app_views.route('amenities/<amenity_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def get_an_amenity(amenity_id):
-    '''retrieves a city object'''
+    '''retrieves a amenity object'''
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         abort(404)
