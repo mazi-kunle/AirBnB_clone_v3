@@ -19,7 +19,7 @@ def get_state():
         for state in all_states:
             states.append(state.to_dict())
 
-        return states
+        return (jsonify(states))
     elif request.method == 'POST':
         if not request.json:
             abort(400, description="Not a JSON")
@@ -28,7 +28,7 @@ def get_state():
 
     new_state = State(**request.get_json())
     new_state.save()
-    return new_state.to_dict(), 201
+    return (jsonify(new_state.to_dict()), 201)
 
 
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'],
@@ -41,13 +41,13 @@ def get_a_state(state_id):
 
     # handle GET requests
     if request.method == 'GET':
-        return(state.to_dict())
+        return (jsonify(state.to_dict()))
 
     # handle DELETE requests
     elif request.method == 'DELETE':
         storage.delete(state)
         storage.save()
-        return(jsonify({}))
+        return (jsonify({}))
 
     # handle PUT requests
     elif request.method == 'PUT':
@@ -62,4 +62,4 @@ def get_a_state(state_id):
                 setattr(state, key, value)
 
         state.save()
-        return(state.to_dict())
+        return (jsonify(state.to_dict()))
