@@ -39,7 +39,7 @@ def get_reviews(place_id):
     data = request.get_json()
     if storage.get(User, data['user_id']) is None:
         abort(404)
-    
+
     data['place_id'] = place_id
     new_review = Review(**data)
     new_review.save()
