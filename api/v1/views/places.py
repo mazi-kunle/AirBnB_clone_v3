@@ -39,6 +39,7 @@ def get_places(city_id):
     if storage.get(User, data['user_id']) is None:
         abort(404)
 
+    data['city_id'] = city_id
     new_place = Place(**data)
     new_place.save()
     return (jsonify(new_place.to_dict()), 201)
