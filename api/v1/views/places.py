@@ -73,7 +73,7 @@ def get_an_place(place_id):
             if key in ['id', 'created_at', 'updated_at', 'user_id', 'city_id']:
                 pass
             else:
-                setattr(user, key, value)
+                setattr(place, key, value)
 
         place.save()
         return (jsonify(place.to_dict()))
