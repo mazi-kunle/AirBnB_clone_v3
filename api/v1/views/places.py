@@ -17,7 +17,7 @@ def get_places(city_id):
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
-    
+
     if request.method == 'GET':
         places = []
         all_place = city.places
