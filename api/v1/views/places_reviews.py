@@ -39,7 +39,8 @@ def get_reviews(place_id):
     data = request.get_json()
     if storage.get(User, data['user_id']) is None:
         abort(404)
-
+    
+    data['place_id'] = place_id
     new_review = Review(**data)
     new_review.save()
     return (jsonify(new_review.to_dict()), 201)
@@ -73,7 +74,7 @@ def get_a_review(review_id):
             if key in ['id', 'created_at', 'updated_at', 'user_id', 'city_id']:
                 pass
             else:
-                setattr(place, key, value)
+                setattr(review, key, value)
 
         review.save()
         return (jsonify(review.to_dict()))
