@@ -7,8 +7,11 @@ from flask import render_template
 from models import storage
 import api.v1.views
 import os
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+cors = CORS(app, resources={'/*': {'origins': '0.0.0.0'}})
 app_views = api.v1.views.app_views
 app.register_blueprint(app_views)
 
